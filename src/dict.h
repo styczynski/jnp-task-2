@@ -7,7 +7,9 @@
  *   @wikzan
  *   @styczynski
  */
-
+#include <cstddef>
+ 
+ 
 /*
  * Creates new empty dictionary and returns its id.
  *
@@ -36,7 +38,7 @@ void dict_delete(unsigned long id);
  * @param[in] id  : id of dictionary
  * @returns size_t size of dictionary
  */
-size_t dict_size(unsigned long id);
+std::size_t dict_size(unsigned long id);
 
 /*
  * Puts a new record in the dictionary
@@ -128,5 +130,5 @@ unsigned long dict_global();
  * If this size is exceeded then adding elements has no effect
  * on the global dictionary.
  */
-const int MAX_GLOBAL_DICT_SIZE = 42;
+const static int MAX_GLOBAL_DICT_SIZE = 42;
  
