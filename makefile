@@ -8,10 +8,14 @@ all: ./bin ./bin/dict_test
 	$(info Compiling dict module ...)
 	@g++ -Wall -Wextra -O2 -std=c++17 -I ./src -c ./src/dict.cc -o ./bin/dict.o
 
-./bin/dict_test: ./bin ./test/dict_test.cc ./bin/dict.o
+./bin/dictglobal.o: ./bin
+	$(info Compiling dictglobal module ...)
+	@g++ -Wall -Wextra -O2 -std=c++17 -I ./src -c ./src/dictglobal.cc -o ./bin/dictglobal.o
+  
+./bin/dict_test: ./bin ./test/dict_test.cc ./bin/dict.o ./bin/dictglobal.o
 	$(info Compile dict_test ...)
 	@g++ -Wall -Wextra -O2 -std=c++17 -I ./src -c ./test/dict_test.cc -o ./bin/dict_test.o
-	@g++ ./bin/dict.o ./bin/dict_test.o -o ./bin/dict_test
+	@g++ ./bin/dict.o ./bin/dictglobal.o ./bin/dict_test.o -o ./bin/dict_test
 	
 clean:
 	@rm -r -f -d ./bin/**

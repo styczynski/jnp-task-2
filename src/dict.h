@@ -8,7 +8,9 @@
  *   @styczynski
  */
 #include <cstddef>
- 
+
+#ifndef __DICT__
+#define __DICT__
  
 /*
  * Creates new empty dictionary and returns its id.
@@ -114,21 +116,5 @@ void dict_clear(unsigned long id);
  * @param[in] dst_id : id of the destination dictionary
  */
 void dict_copy(unsigned long src_id, unsigned long dst_id);
-
-/*
- * Returns the id of global dictionary.
- *
- * Global dictionary is unremovable.
- * dict_remove on it has no effects.
- * 
- */
-unsigned long dict_global();
-
-/*
- * Maximum size of global dictionary.
- * 
- * If this size is exceeded then adding elements has no effect
- * on the global dictionary.
- */
-const static int MAX_GLOBAL_DICT_SIZE = 42;
  
+#endif // __DICT__

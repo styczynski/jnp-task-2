@@ -9,7 +9,7 @@
  */
 #include "dict.h"
  
- // Create new dict and return its id
+// Create new dict and return its id
 unsigned long dict_new() {
   // FIX: Transh value
   return 0;
@@ -52,10 +52,3 @@ void dict_copy(unsigned long src_id, unsigned long dst_id) {
   
 }
 
-// Get global dict
-unsigned long dict_global() {
- // FIX: Transh value
-  return 0;
-}
-
- 
