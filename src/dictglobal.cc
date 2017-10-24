@@ -7,7 +7,6 @@
  *   @wikzan
  *   @styczynski
  */
-#include "dict.h"
 #include "dictglobal.h"
  
 // Get global dict

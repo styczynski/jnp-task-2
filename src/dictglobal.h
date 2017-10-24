@@ -8,6 +8,7 @@
  *   @styczynski
  */
 #include <cstddef>
+#include "dict.h"
 
 #ifndef __DICT_GLOBAL__
 #define __DICT_GLOBAL__
