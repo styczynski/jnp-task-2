@@ -11,6 +11,7 @@
  
 // Get global dict
 unsigned long dict_global() {
+  // TODO: wikzan
   // FIX: Transh value
   return 0;
 }
