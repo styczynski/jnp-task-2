@@ -1,0 +1,26 @@
+/*
+ * JNP-ZAD-2
+ *
+ *  University of Warsaw 2017
+ *
+ * Contributors:
+ *   @wikzan
+ *   @styczynski
+ */
+
+#include <cstddef>
+ 
+#ifndef __CDICT__
+#define __CDICT__
+
+extern "C" {
+ 
+  namespace jnp1 {
+
+#include "dict.h"
+
+  } // namespace jnp1
+
+} // extern C
+
+#endif // __CDICT__

@@ -7,7 +7,6 @@
  *   @wikzan
  *   @styczynski
  */
-#include <cstddef>
 
 #ifndef __DICT__
 #define __DICT__
@@ -40,7 +39,7 @@ void dict_delete(unsigned long id);
  * @param[in] id  : id of dictionary
  * @returns size_t size of dictionary
  */
-std::size_t dict_size(unsigned long id);
+size_t dict_size(unsigned long id);
 
 /*
  * Puts a new record in the dictionary

@@ -7,18 +7,20 @@
  *   @wikzan
  *   @styczynski
  */
+
 #include <cstddef>
  
-extern "C" { 
+#ifndef __CDICT_GLOBAL__
+#define __CDICT_GLOBAL__
+
+extern "C" {
  
+  namespace jnp1 {
+
 #include "dictglobal.h"
- 
-  // Get global dict
-  unsigned long dict_global() {
-    // TODO: wikzan
-    // FIX: Transh value
-    return 0;
-  }
+
+  } // namespace jnp1
 
 } // extern C
  
+#endif // __CDICT_GLOBAL__
