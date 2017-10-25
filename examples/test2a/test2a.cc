@@ -1,6 +1,7 @@
 #include <cassert>
 #include <cstring>
 #include "cdict"
+#include <iostream>
 
 namespace {
     int streq(const char* s1, const char* s2, size_t len) {

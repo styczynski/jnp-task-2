@@ -18,7 +18,7 @@
  * If this size is exceeded then adding elements has no effect
  * on the global dictionary.
  */
-__attribute__((unused)) static int MAX_GLOBAL_DICT_SIZE = 42;
+__attribute__((unused)) static unsigned long MAX_GLOBAL_DICT_SIZE = 42;
  
  
 /*

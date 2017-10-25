@@ -9,14 +9,12 @@
  */
 #include <cstddef>
  
-extern "C" { 
+extern "C" {
  
 #include "dictglobal.h"
  
     // Get global dict
     unsigned long dict_global() {
-        // TODO: wikzan
-        // FIX: Transh value
         return 0;
     }
 
