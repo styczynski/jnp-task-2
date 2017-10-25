@@ -80,7 +80,6 @@ extern "C" {
 
     // Create new record in dict
     void dict_insert(unsigned long id, const char* key, const char* value) {
-        // TODO: styczyn
       
         if(DEBUG) {
             std::cerr << "dict_insert(" << id << ", "<< format_cstring(key)
@@ -109,7 +108,6 @@ extern "C" {
 
     // Get value from dict
     const char* dict_find(unsigned long id, const char* key) {
-        // TODO: styczyn
       
         if(DEBUG) {
             std::cerr << "dict_find(" << id << ", "<< format_cstring(key) << ")\n";
