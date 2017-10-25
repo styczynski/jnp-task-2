@@ -15,11 +15,11 @@
 
 extern "C" {
  
-  namespace jnp1 {
-
+    namespace jnp1 {
+  
 #include "dictglobal.h"
 
-  } // namespace jnp1
+    } // namespace jnp1
 
 } // extern C
  
