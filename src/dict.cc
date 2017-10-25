@@ -14,6 +14,7 @@
 #include <vector>
 #include <iostream>
 #include <functional>
+#include <cassert>
 
 extern "C" {
 
@@ -110,10 +111,20 @@ extern "C" {
 			free_id = last_id+1;
 		}
         
+		if(DEBUG) {
+			// There's no value with free_id key
+			assert(get_dict_container().find(free_id) == get_dict_container().end());
+			// We do not return global dictionary key
+			assert(free_id != 0);
+		}
+		
 		// Create new dictionary
         get_dict_container().insert( { free_id, Dict() } );
         
         if(DEBUG) {
+			// Key free_id is now present
+			assert(get_dict_container().find(free_id) != get_dict_container().end());
+			
             std::cerr << "dict_new: dict " << free_id << " has been created\n";
         }
         
@@ -126,6 +137,11 @@ extern "C" {
 		
 		if(!is_valid_id(id) || id == 0) return;
 		get_dict_container().erase(id);
+		
+		if(DEBUG) {
+			// There's no dictionary with that key
+			assert(!is_valid_id(id));
+		}
     }
 
     // Count records in dict
@@ -170,6 +186,10 @@ extern "C" {
         get_dict_container()[id].insert({ key_str, value_str });
       
         if(DEBUG) {
+			
+			// Global dictionary has maximum size MAX_GLOBAL_DICT_SIZE
+			assert(id != 0 || get_dict_container()[id].size() <= MAX_GLOBAL_DICT_SIZE);
+			
             std::cerr << "dict_insert: dict " << id << ", the pair (" << format_cstring(key)
                       << ", " << format_cstring(value) << ") has been inserted\n";
         }
@@ -180,7 +200,14 @@ extern "C" {
         // TODO: Wikzan add debug output
 		
 		if(!is_valid_id(id)) return;
+		if(key == nullptr) return;
+		
 		get_dict_container()[id].erase(key);
+		
+		if(DEBUG) {
+			// Dictionary hasn't got that key anymore
+			assert(get_dict_container()[id].find(key) == get_dict_container()[id].end());
+		}
     }
 
     // Get value from dict
@@ -191,6 +218,7 @@ extern "C" {
         }
       
         if(!is_valid_id(id)) return nullptr;
+		if(key == nullptr) return nullptr;
 		
         DictConstIterator i = get_dict_container()[id].find(std::string(key));
         if(i == get_dict_container()[id].end()) {
@@ -218,6 +246,11 @@ extern "C" {
 		
 		if(!is_valid_id(id)) return;
 		get_dict_container()[id].clear();
+		
+		if(DEBUG) {
+			// The size of dictionary is zero
+			assert(get_dict_container()[id].size() == 0);
+		}
     }
 
     // Copy dicts src -> dst
@@ -228,6 +261,11 @@ extern "C" {
 		if(!is_valid_id(dst_id)) return;
 		
 		get_dict_container()[dst_id] = get_dict_container()[src_id];
+		
+		if(DEBUG) {
+			// The size of both dictionaries is the same
+			assert(get_dict_container()[dst_id].size() == get_dict_container()[src_id].size());
+		}
     }
 
 } // extern C
