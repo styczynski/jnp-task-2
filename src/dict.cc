@@ -39,7 +39,7 @@ extern "C" {
         // Type definitions
         typedef std::unordered_map<std::string, std::string> Dict;
         typedef Dict::const_iterator DictConstIterator;
-        typedef std::map<unsigned long, Dict, std::greater<unsigned long>> DictContainer;
+        typedef std::map<unsigned long, Dict> DictContainer;
         typedef DictContainer::const_iterator DictContainerConstIterator;
         
         /*
@@ -99,7 +99,7 @@ extern "C" {
         bool free_id_found = false;
         
         for ( const auto &dict : get_dict_container() ) {
-            if(dict.first != last_id+1) {
+            if(dict.first != 0 && dict.first != last_id+1) {
                 free_id = last_id+1;
                 free_id_found = true;
                 break;
