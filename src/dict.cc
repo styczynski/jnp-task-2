@@ -16,6 +16,8 @@
 extern "C" {
 
 #include "dict.h"
+
+// Constants
 #ifndef NDEBUG
 
     constexpr bool DEBUG = true;
@@ -28,16 +30,32 @@ extern "C" {
 
     namespace {
      
+		// Type definitions
         typedef std::unordered_map<std::string, std::string> Dict;
         typedef Dict::const_iterator DictConstIterator;
         typedef std::vector<Dict> DictContainer;
         
+		// Dictionaries container
         static DictContainer dictionaries = {};
 
+		/*
+		 * Checks if dictionary with given id exists.
+		 *
+		 * @param[in] id : dictionary id
+		 * @returns If the dictionary exists?
+		 */
         bool is_valid_id(const unsigned long& id) {
             return dictionaries.size();
         }
         
+		/*
+		 * Formats C98 (char pointer) string.
+		 * Returns string: NULL for NULLs
+		 * And string: "<contents>" for non-null pointers 
+		 *
+		 * @param[in] text : input C98 string
+		 * @returns formatted std::string
+		 */
         std::string format_cstring(const char* text) {
             if(text == nullptr) {
                 return "NULL";
